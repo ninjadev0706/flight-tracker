@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+body {
+  margin: 0;
+  font-family:'poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.br-0
+{
+  border-radius:0;
+}
+nav
+{
+height:50px;
+position: fixed;
+padding:20px;
+}
+nav h2 
+{
+  font-size:32px;
+  color:#ffffff;
+  font-weight: 700;
+
+}
+nav h2 span
+{
+  color: #9fff99;
+}
