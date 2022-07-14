@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
 body {
+  background: #13181c;
   margin: 0;
-  font-family:'poppins', sans-serif;
+  font-family: 'poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,24 +13,22 @@ code {
     monospace;
 }
 
-.br-0
-{
-  border-radius:0;
+.br-0 {
+  border-radius: 0;
 }
-nav
-{
-height:50px;
-position: fixed;
-padding:20px;
-}
-nav h2 
-{
-  font-size:32px;
-  color:#ffffff;
-  font-weight: 700;
 
+nav {
+  /* height: 50px; */
 }
-nav h2 span
-{
+
+nav {
+  font-size: 32px;
+  color: #ffffff;
+  font-weight: 700;
+  margin: 20px;
+  background: #13181c;
+}
+
+nav span {
   color: #9fff99;
 }

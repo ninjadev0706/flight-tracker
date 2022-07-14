@@ -1,13 +1,14 @@
 import React from 'react';
+import { Nav } from './styles';
 
-const navbar = () => {
+const Navbar = () => {
     return (
-        <>
-        <nav>
-        <h2><span>Flight</span> Tracker</h2>    
-        </nav>
-        </>
+        <Nav>
+            <nav>
+                <span>Flight</span> Tracker
+            </nav>
+        </Nav>
     );
 }
 
-export default navbar;
+export default Navbar;

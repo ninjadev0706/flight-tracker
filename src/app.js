@@ -1,31 +1,75 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import {Airports} from './components/Airports';
-import Search from './components/Search';
-import { useAirports } from './hooks/api';
+import { Grid } from '@mui/material';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Airports from './components/Airports';
+import Arrivals from './components/Arrivals';
+import Departures from './components/Departures';
+import { useAirports, useFlight } from './hooks/api';
+import Navbar from './components/Navbar';
+import { BackImg } from './components/styles';
 
 export default () => {
-    const [carrier, setCarrier] = useState("");
-    const [date, setDate] = useState("");
-    const [flightNumber, setFlightNumber] = useState("");
+    const { onAirports, data } = useAirports();
+    const [selectedAirport, setAirport] = useState('00AA');
+    const { onFlight, fligtsdata } = useFlight();
 
-    const airports = useAirports();
-    console.log(airports);
+    const isMobile = useMediaQuery("(max-width: 1000px)");
+
+    useEffect(() => {
+        onAirports();
+    }, [])
+
+    useEffect(() => {
+        if (selectedAirport) {
+            onFlight(selectedAirport);
+        }
+    }, [selectedAirport])
+
+
+    useEffect(() => {
+        if (fligtsdata) {
+            console.log("fligtsdata => ", fligtsdata);
+            localStorage.setItem("flightsdata", JSON.stringify(fligtsdata));
+        }
+    }, [fligtsdata])
+
+    const SelectAirport = (value) => {
+        setAirport(value.code);
+    }
+
     return (
-        <div>
-            <Search date={date} setDate={setDate} flightNumber={flightNumber} setFlightNumber={setFlightNumber} carrier={carrier} setCarrier={setCarrier} />
-            <div>
-                <Box sx={{ width: 1, margin: '20px' }}>
-                    <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-                        <Airports />
-                        
-                        <Box gridColumn="span 8">
-                            <div>xs=8</div>
-                        </Box>
-                    </Box>
-                </Box>
-            </div>
-        </div>
+        <>
+            <Navbar />
+            <Box sx={{ flexGrow: 1 }} m='20px'>
+                {
+                    !isMobile ?
+                        <Grid container justifyContent="space-between">
+                            <Grid item xs={2}>
+                                <Airports airports={data} SelectAirport={SelectAirport} selectedAirport={selectedAirport} />
+                            </Grid>
+                            <Grid item xs={4.5}>
+                                <Arrivals />
+                            </Grid>
+                            <Grid item xs={4.5}>
+                                <Departures />
+                            </Grid>
+                        </Grid>
+                        :
+                        <Grid container>
+                            <Grid item xs={12}>
+                                <Airports airports={data} SelectAirport={SelectAirport} selectedAirport={selectedAirport} />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Arrivals />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Departures />
+                            </Grid>
+                        </Grid>
+                }
+            </Box>
+        </>
     )
 }
 
