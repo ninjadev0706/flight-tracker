@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import List from '@mui/material/List';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,7 +10,14 @@ import { ArrivalContainer } from './styles';
 import { Title, } from '../styles';
 
 const Arrivals = () => {
-    const flightdata = JSON.parse(localStorage.getItem("flightsdata"));
+    const [flightdata, setFlightdata] = useState();
+    
+    useEffect(() => {
+        if(localStorage.getItem("flightsdata")) {
+            setFlightdata(JSON.parse(localStorage.getItem("flightsdata")));
+        }
+    }, [])
+    
     return (
         <ArrivalContainer>
             <Title>ARRIVALS</Title>
@@ -27,7 +33,7 @@ const Arrivals = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {flightdata.arrivals.map((row, id) => (
+                        {flightdata && flightdata.arrivals.map((row, id) => (
                             <TableRow
                                 key={id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

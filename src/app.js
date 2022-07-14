@@ -7,9 +7,8 @@ import Arrivals from './components/Arrivals';
 import Departures from './components/Departures';
 import { useAirports, useFlight } from './hooks/api';
 import Navbar from './components/Navbar';
-import { BackImg } from './components/styles';
 
-export default () => {
+const App = () => {
     const { onAirports, data } = useAirports();
     const [selectedAirport, setAirport] = useState('00C');
     const { onFlight, fligtsdata } = useFlight();
@@ -18,13 +17,13 @@ export default () => {
 
     useEffect(() => {
         onAirports();
-    }, [])
+    }, [onAirports])
 
     useEffect(() => {
         if (selectedAirport) {
             onFlight(selectedAirport);
         }
-    }, [selectedAirport])
+    }, [selectedAirport, onFlight])
 
 
     useEffect(() => {
@@ -73,4 +72,5 @@ export default () => {
     )
 }
 
+export default App;
 
