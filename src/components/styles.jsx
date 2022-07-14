@@ -17,8 +17,3 @@ export const Nav = styled.div`
         border-radius: 5px;
     }
 `
-
-// export const BackImg = styled.img`
-//     position: fixed;
-//     z-index: -10;
-// `

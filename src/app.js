@@ -11,7 +11,7 @@ import { BackImg } from './components/styles';
 
 export default () => {
     const { onAirports, data } = useAirports();
-    const [selectedAirport, setAirport] = useState('00AA');
+    const [selectedAirport, setAirport] = useState('00C');
     const { onFlight, fligtsdata } = useFlight();
 
     const isMobile = useMediaQuery("(max-width: 1000px)");
