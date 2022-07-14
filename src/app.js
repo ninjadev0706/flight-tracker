@@ -6,7 +6,7 @@ import Airports from './components/Airports';
 import Arrivals from './components/Arrivals';
 import Departures from './components/Departures';
 import { useAirports, useFlight } from './hooks/api';
-import Navbar from './components/Navbar';
+import Navbar from './Navbar';
 
 const App = () => {
     const { onAirports, data } = useAirports();
