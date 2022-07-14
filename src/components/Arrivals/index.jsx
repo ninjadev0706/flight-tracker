@@ -9,8 +9,14 @@ import Paper from '@mui/material/Paper';
 import { ArrivalContainer } from './styles';
 import { Title, } from '../styles';
 
-const Arrivals = () => {
+const Arrivals = ({fligtsdata}) => {
     const [flightdata, setFlightdata] = useState();
+
+    useEffect(() => {
+        if(fligtsdata) {
+            setFlightdata(fligtsdata);
+        }
+    }, [fligtsdata])
     
     useEffect(() => {
         if(localStorage.getItem("flightsdata")) {

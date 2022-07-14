@@ -48,10 +48,10 @@ const App = () => {
                                 <Airports airports={data} SelectAirport={SelectAirport} selectedAirport={selectedAirport} />
                             </Grid>
                             <Grid item xs={4.5}>
-                                <Arrivals />
+                                <Arrivals fligtsdata={fligtsdata} />
                             </Grid>
                             <Grid item xs={4.5}>
-                                <Departures />
+                                <Departures fligtsdata={fligtsdata}/>
                             </Grid>
                         </Grid>
                         :
